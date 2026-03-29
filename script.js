@@ -10,7 +10,7 @@ let activeSort = 'featured';
 // ===== LOAD PRODUCTS =====
 async function loadProducts() {
   try {
-    const res = await fetch(`${API_URL}/products`);
+    const res = await fetch(`${API_URL}/api/products`);
     if (!res.ok) throw new Error('Failed to fetch');
     products = await res.json();
     renderProducts(products);
