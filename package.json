@@ -4,7 +4,7 @@
   "description": "Backend API for Sprinter Sports e-commerce",
   "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node server.js",
     "dev": "node backend/server.js"
   },
   "keywords": ["sports", "ecommerce", "api"],
