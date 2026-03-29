@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'https://sprinter-sports-production.up.railway.app';
 
 // ===== STATE =====
 let products = [];

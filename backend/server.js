@@ -8,7 +8,16 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://sprinter-sports.vercel.app',
+    'https://sprinter-admin.vercel.app',
+    'http://localhost:3000',
+    'http://127.0.0.1:5500',
+    'http://localhost:5500'
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
