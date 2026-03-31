@@ -34,6 +34,7 @@ router.post('/', authMiddleware, (req, res) => {
         image: image || '/images/default.jpg',
         rating: 4.0
     })
+    console.log(product)
 
     res.status(201).json(product)
 })

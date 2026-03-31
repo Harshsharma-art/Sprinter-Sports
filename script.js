@@ -1,4 +1,4 @@
-const API_URL = 'https://sprinter-sports-production.up.railway.app';
+const API_URL = 'http://localhost:3001';
 
 // ===== STATE =====
 let products = [];
@@ -17,8 +17,11 @@ async function loadProducts() {
     renderBestSellers(products);
   } catch (err) {
     console.error('Error loading products:', err);
-    document.getElementById('productsGrid').innerHTML =
-      '<p style="padding:24px;color:#666;">Could not load products. Make sure the backend is running on port 3001.</p>';
+    // Only show error message if grid is empty (first load)
+    if (!document.getElementById('productsGrid').innerHTML) {
+      document.getElementById('productsGrid').innerHTML =
+        '<p style="padding:24px;color:#666;">Could not load products. Make sure the backend is running.</p>';
+    }
   }
 }
 
@@ -323,4 +326,12 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   updateWishlistUI();
   startCountdown();
+
+  // Re-fetch products when tab becomes visible (e.g. after admin changes)
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') loadProducts();
+  });
+
+  // Poll every 10 seconds to catch admin updates in real time
+  setInterval(loadProducts, 10000);
 });
